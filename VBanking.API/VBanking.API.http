@@ -1,0 +1,6 @@
+@VBanking.API_HostAddress = http://localhost:5171
+
+GET {{VBanking.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
