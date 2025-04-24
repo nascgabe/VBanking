@@ -3,3 +3,11 @@
 ################################################################################
 
 /.vs/VBanking
+/VBanking.Tests/bin/Debug/net8.0
+/VBanking.Tests/obj/Release/net8.0
+/VBanking.Tests/obj/Debug/net8.0/refint
+/VBanking.Tests/obj/Debug/net8.0
+/VBanking.Tests/obj
+/.vs
+/VBanking.API/bin/Debug/net8.0
+/VBanking.Application/bin/Debug/net8.0
