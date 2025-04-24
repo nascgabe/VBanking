@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VBanking.Domain", "VBanking
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VBanking.Infrastructure", "VBanking.Infrastructure\VBanking.Infrastructure.csproj", "{629F5B2A-450D-4B93-A90A-D2EA32A4C969}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VBanking.Tests", "VBanking.Tests\VBanking.Tests.csproj", "{0C4C26BF-33E5-4EFC-A00E-915B38239114}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -36,5 +38,9 @@ Global
 		{629F5B2A-450D-4B93-A90A-D2EA32A4C969}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{629F5B2A-450D-4B93-A90A-D2EA32A4C969}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{629F5B2A-450D-4B93-A90A-D2EA32A4C969}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0C4C26BF-33E5-4EFC-A00E-915B38239114}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0C4C26BF-33E5-4EFC-A00E-915B38239114}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0C4C26BF-33E5-4EFC-A00E-915B38239114}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0C4C26BF-33E5-4EFC-A00E-915B38239114}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
