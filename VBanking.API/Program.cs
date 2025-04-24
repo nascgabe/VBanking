@@ -12,6 +12,7 @@ builder.Services.AddDbContext<BankingDbContext>(options =>
 
 builder.Services.AddScoped<IAccountRepository, AccountRepository>();
 builder.Services.AddScoped<IAccountDeactivationLogRepository, AccountDeactivationLogRepository>();
+builder.Services.AddScoped<ITransferAuditLogRepository, TransferAuditLogRepository>();
 
 builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(CreateAccountHandler).Assembly));
 

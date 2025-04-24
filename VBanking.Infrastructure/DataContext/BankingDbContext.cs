@@ -7,6 +7,7 @@ namespace VBanking.Infrastructure.Data
     {
         public DbSet<Account> Accounts { get; set; }
         public DbSet<AccountDeactivationLog> AccountDeactivationLogs { get; set; }
+        public DbSet<TransferAuditLog> TransferAuditLogs { get; set; }
 
 
         public BankingDbContext(DbContextOptions<BankingDbContext> options) : base(options) { }
