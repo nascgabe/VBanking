@@ -123,11 +123,12 @@ namespace VBanking.Tests.Units
         {
             // Arrange
             var repository = new Mock<IAccountRepository>();
+            var auditLogRepository = new Mock<ITransferAuditLogRepository>();
 
             repository.Setup(r => r.GetByDocumentAsync("11122233344"))
                 .ReturnsAsync(new Account("Gabriel", "11122233344"));
 
-            var handler = new TransferFundsHandler(repository.Object);
+            var handler = new TransferFundsHandler(repository.Object, auditLogRepository.Object);
             var command = new TransferFundsCommand("11122233344", "11122233344", 200);
 
             // Act & Assert
@@ -136,12 +137,12 @@ namespace VBanking.Tests.Units
                 .WithMessage("Não é possível transferir para a mesma conta.");
         }
 
-
         [Fact]
         public async Task Should_Throw_Exception_When_Banking_System_Is_Down()
         {
             // Arrange
             var repository = new Mock<IAccountRepository>();
+            var auditLogRepository = new Mock<ITransferAuditLogRepository>();
 
             // Simular que as contas existem
             repository.Setup(r => r.GetByDocumentAsync("11122233344"))
@@ -154,7 +155,7 @@ namespace VBanking.Tests.Units
             repository.Setup(r => r.UpdateAsync(It.IsAny<Account>()))
                 .ThrowsAsync(new Exception("Banco de dados indisponível"));
 
-            var handler = new TransferFundsHandler(repository.Object);
+            var handler = new TransferFundsHandler(repository.Object, auditLogRepository.Object);
             var command = new TransferFundsCommand("11122233344", "55566677788", 200);
 
             // Act & Assert

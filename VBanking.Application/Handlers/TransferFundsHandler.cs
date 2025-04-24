@@ -1,5 +1,6 @@
 ﻿using MediatR;
 using VBanking.Application.Commands;
+using VBanking.Domain.Entities;
 using VBanking.Domain.Interfaces;
 
 namespace VBanking.Application.Handlers
@@ -7,8 +8,14 @@ namespace VBanking.Application.Handlers
     public class TransferFundsHandler : IRequestHandler<TransferFundsCommand, bool>
     {
         private readonly IAccountRepository _repository;
+        private readonly ITransferAuditLogRepository _transactionLogRepository;
 
-        public TransferFundsHandler(IAccountRepository repository) => _repository = repository;
+        public TransferFundsHandler(IAccountRepository repository,
+            ITransferAuditLogRepository transferAuditLogRepository)
+        {
+            _repository = repository;
+            _transactionLogRepository = transferAuditLogRepository;
+        }
 
         public async Task<bool> Handle(TransferFundsCommand request, CancellationToken cancellationToken)
         {
@@ -32,6 +39,9 @@ namespace VBanking.Application.Handlers
 
             await _repository.UpdateAsync(fromAccount);
             await _repository.UpdateAsync(toAccount);
+
+            var auditLog = new TransferAuditLog(request.FromDocument, request.ToDocument, request.Amount);
+            await _transactionLogRepository.AddLogAsync(auditLog);
 
             return true;
         }
